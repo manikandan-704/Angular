@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter,input , Input, output, Output } from '@angular/core';
 
 @Component({
   selector: 'app-display-counter',
@@ -7,5 +7,13 @@ import { Component, Input } from '@angular/core';
   styleUrl: './display-counter.css',
 })
 export class DisplayCounter {
-  @Input() counter! : number
+  // @Input() counter! : number
+  counter = input<number>(0);
+
+  //  @Output() sendData = new EventEmitter<string>();
+  sendData= output<string>();
+
+  buttonClick() {
+    this.sendData.emit('Data from child');
+  }
 }
